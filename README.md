@@ -9,8 +9,6 @@ The Waterlogged project aims to create a tool allowing white-water kayakers to :
 - Get logs about their previous outings
 - Get in contact with other paddlers
 
-API River allows to gather data from different API in order to  provide a clean, ready to use set of data for the Watlogged back-end  component. API River runs on a NodeJS server and uses ExpressJS to  provide a clean API.
-
 Back-end provide data to the front-end component from the other APIs. This component runs with SpringBoot/Maven.
 
 ## How to run the project ?
