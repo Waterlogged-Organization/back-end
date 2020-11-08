@@ -1,0 +1,14 @@
+version: '3'
+networks:
+  back-end:
+
+services:
+  back:
+    build:
+      context: .
+    volumes:
+      - '.:/back-end'
+    networks:
+      - back-end
+    ports:
+      - 8081:8080
