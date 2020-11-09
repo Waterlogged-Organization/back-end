@@ -1,0 +1,13 @@
+
+type Query {
+    riverById(id:ID) : River
+}
+
+type River {
+    id: ID
+    name: String
+    level: Float
+    difficulty: Int
+    latitude: Float
+    longitude: Float
+}
