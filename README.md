@@ -72,7 +72,7 @@ Server address : `http://localhost:8081/graphql`
 - SpringBoot implementation based on: https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot
 - GraphQL implementation based on: https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
 
-## Authors
+## Authors 
 
 - [Justin Foltz](https://github.com/JustinFoltz)
 - [Maxime Hutinet](https://github.com/maximehutinet)
