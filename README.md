@@ -37,7 +37,7 @@ To run the project, the followings must be installed on the machine :
 - With Postman: follow this tutorial : https://youtu.be/7pUbezVADQs, using `./src/main/resources/schema.graphqls` to create the schema
 - With [GraphQL Playground](https://github.com/prisma/graphql-playground)
 
-Server address: `http://localhost:8081/graphql`
+Server address : `http://localhost:8081/graphql`
 
 <u>Request examples:</u> 
 
@@ -72,7 +72,7 @@ Server address: `http://localhost:8081/graphql`
 - SpringBoot implementation based on: https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot
 - GraphQL implementation based on: https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
 
-## Authors
+## Authors 
 
 - [Justin Foltz](https://github.com/JustinFoltz)
 - [Maxime Hutinet](https://github.com/maximehutinet)
