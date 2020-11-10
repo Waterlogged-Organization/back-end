@@ -34,12 +34,12 @@ To run the project, the followings must be installed on the machine :
 
 ### Send GraphQL request 
 
-- With Postman : follow this tutorial : https://youtu.be/7pUbezVADQs, using `./src/main/resources/schema.graphqls` to create the schema
+- With Postman: follow this tutorial : https://youtu.be/7pUbezVADQs, using `./src/main/resources/schema.graphqls` to create the schema
 - With [GraphQL Playground](https://github.com/prisma/graphql-playground)
 
 Server address : `http://localhost:8081/graphql`
 
-<u>Request examples :</u> 
+<u>Request examples:</u> 
 
 ```yaml
 // Get a river by id :
@@ -69,8 +69,8 @@ Server address : `http://localhost:8081/graphql`
 
 ## Sources
 
-- SpringBoot implementation : https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot
-- GraphQL implementation : https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
+- SpringBoot implementation based on: https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot
+- GraphQL implementation based on: https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
 
 ## Authors 
 
