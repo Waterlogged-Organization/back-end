@@ -93,12 +93,10 @@ public class GraphQLDataFetchers {
             return rivers
                     .stream()
                     .filter(river -> 
-                        (Double.parseDouble(river.get("latitude")) <= (riverLatitude+riverRadius)) &&
-                        (Double.parseDouble(river.get("latitude")) >= (riverLatitude-riverRadius)))
-                    .filter(river -> 
-                        (Double.parseDouble(river.get("longitude")) <= (riverLongitude+riverRadius)) &&
-                        (Double.parseDouble(river.get("longitude")) >= (riverLongitude-riverRadius)))
+                        Math.pow(Double.parseDouble(river.get("latitude")) - riverLatitude, 2) + 
+                        Math.pow(Double.parseDouble(river.get("longitude")) - riverLongitude, 2) <= riverRadius)
                     .collect(Collectors.toList());
+
         };
     }
 
