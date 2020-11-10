@@ -1,3 +1,9 @@
+/**
+ * Springboot server
+ * @author Maxime Hutinet <maxime@hutinet.ch>
+ * @author Justin Foltz <justin.foltz@gmail.com>
+ */
+
 package com.waterloggedorganisation.backend;
 
 import org.springframework.boot.SpringApplication;

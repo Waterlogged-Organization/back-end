@@ -39,9 +39,10 @@ To run the project, the followings must be installed on the machine :
 
 Server address : `http://localhost:8081/graphql`
 
-Request example : 
+<u>Request examples :</u> 
 
-```
+```yaml
+// Get a river by id :
 {
     riverById (id: "river-1") {
         id
@@ -52,6 +53,18 @@ Request example :
         longitude
     }
 } 
+
+// Get a river by location :
+{
+    riverByLocation(latitude:44.5, longitude:4, radius:50) {
+        id
+        name
+        level
+        difficulty
+        latitude
+        longitude
+    }
+}
 ```
 
 ## Authors

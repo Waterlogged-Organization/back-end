@@ -1,3 +1,9 @@
+/**
+ * GraphQL instance : read, parse and fetch data for defined schema
+ * @author Maxime Hutinet <maxime@hutinet.ch>
+ * @author Justin Foltz <justin.foltz@gmail.com>
+ */
+
 package com.waterloggedorganisation.backend;
 
 import com.google.common.base.Charsets;
@@ -31,9 +37,7 @@ public class GraphQLProvider {
 
     @PostConstruct
     public void init() throws IOException {
-        System.out.println( "INIT ----------------");
         URL url = Resources.getResource("schema.graphqls");
-        System.out.println( "url:" + url);
         String sdl = Resources.toString(url, Charsets.UTF_8);
         GraphQLSchema graphQLSchema = buildSchema(sdl);
         this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
@@ -51,6 +55,8 @@ public class GraphQLProvider {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
                         .dataFetcher("riverById", graphQLDataFetchers.getRiverByIdDataFetcher()))
+                .type(newTypeWiring("Query")
+                        .dataFetcher("riverByLocation", graphQLDataFetchers.getRiverByLocationDataFetcher()))      
                 .build();
     }
 

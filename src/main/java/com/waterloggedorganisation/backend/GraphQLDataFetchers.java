@@ -1,9 +1,17 @@
+/**
+ * Define fake database and route implementations
+ * @author Maxime Hutinet <maxime@hutinet.ch>
+ * @author Justin Foltz <justin.foltz@gmail.com>
+ */
+
+
 package com.waterloggedorganisation.backend;
 
 import com.google.common.collect.ImmutableMap;
 import graphql.schema.DataFetcher;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +36,7 @@ public class GraphQLDataFetchers {
             .put("name", "Verdanson")
             .put("level", "55.6")
             .put("difficulty", "3")
-            .put("latitude", "43,428443")
+            .put("latitude", "43.428443")
             .put("longitude", "5.384198")
             .build(),
 
@@ -70,6 +78,27 @@ public class GraphQLDataFetchers {
                     .filter(river -> river.get("id").equals(riverId))
                     .findFirst()
                     .orElse(null);
+        };
+    }
+
+    // DataFetcher of the request riverByLocation
+    public DataFetcher getRiverByLocationDataFetcher() {
+        return dataFetchingEnvironment -> {
+            Double riverLatitude = dataFetchingEnvironment.getArgument("latitude");
+            Double riverLongitude = dataFetchingEnvironment.getArgument("longitude");
+
+            // Radius conversion : 78.567 is equal to 1 degree on earth coordinates
+            Double riverRadius = (Double)dataFetchingEnvironment.getArgument("radius") / new Double(78.567);
+
+            return rivers
+                    .stream()
+                    .filter(river -> 
+                        (Double.parseDouble(river.get("latitude")) <= (riverLatitude+riverRadius)) &&
+                        (Double.parseDouble(river.get("latitude")) >= (riverLatitude-riverRadius)))
+                    .filter(river -> 
+                        (Double.parseDouble(river.get("longitude")) <= (riverLongitude+riverRadius)) &&
+                        (Double.parseDouble(river.get("longitude")) >= (riverLongitude-riverRadius)))
+                    .collect(Collectors.toList());
         };
     }
 

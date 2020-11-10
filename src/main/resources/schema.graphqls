@@ -1,7 +1,19 @@
+# Authors : 
+#   - Maxime Hutinet <maxime@hutinet.ch>
+#   - Justin Foltz <justin.foltz@gmail.com>
+
+# ---------------------------------
+# Queries
+# ---------------------------------
 
 type Query {
     riverById(id:ID) : River
+    riverByLocation(latitude:Float, longitude:Float, radius:Float): [River]
 }
+
+# ---------------------------------
+# Model objects
+# ---------------------------------
 
 type River {
     id: ID
