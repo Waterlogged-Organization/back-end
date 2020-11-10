@@ -37,7 +37,7 @@ To run the project, the followings must be installed on the machine :
 - With Postman: follow this tutorial : https://youtu.be/7pUbezVADQs, using `./src/main/resources/schema.graphqls` to create the schema
 - With [GraphQL Playground](https://github.com/prisma/graphql-playground)
 
-Server address : `http://localhost:8081/graphql`
+Server address: `http://localhost:8081/graphql`
 
 <u>Request examples:</u> 
 
