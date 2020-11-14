@@ -9,6 +9,8 @@
 type Query {
     riverById(id:ID) : River
     riverByLocation(latitude:Float, longitude:Float, radius:Float): [River]
+    riverByPlace(placeName:String, radius:Float) : [River]
+    searchFromPattern(pattern:String): [Search]
 }
 
 # ---------------------------------
@@ -20,6 +22,17 @@ type River {
     name: String
     level: Float
     difficulty: Int
+    latitude: Float
+    longitude: Float
+}
+
+type Search {
+    name: String
+    type: String
+}
+
+type Place {
+    name: String
     latitude: Float
     longitude: Float
 }

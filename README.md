@@ -65,6 +65,28 @@ Server address : `http://localhost:8081/graphql`
         longitude
     }
 }
+
+// Get a river by place name :
+{
+    riverByPlace(placeName: "Alès", radius: 15) {
+        id
+        name
+        level
+        difficulty
+        latitude
+        longitude
+    }
+}
+
+// Search river and places by name (aucompletion)
+{
+    searchFromPattern(pattern: "La") {
+        name
+        type
+    }
+}
+
+
 ```
 
 ## Sources
