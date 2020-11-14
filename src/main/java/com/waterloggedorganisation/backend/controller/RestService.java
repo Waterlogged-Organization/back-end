@@ -24,7 +24,7 @@ public class RestService {
     @Autowired
     private LocationManager locationManager;
 
-    private String googleAPIKey = "&key=";
+    private String googleAPIKey = "";
 
     private enum ApiBaseUrl {
         GEO("https://maps.googleapis.com/maps/api/geocode/json?address="), 
@@ -55,7 +55,7 @@ public class RestService {
      */
     public Optional<double[]> getCoordinatesFromPlace(String placeName) {
         if( placeName.equals("") ) { return Optional.empty(); }
-        String url = ApiBaseUrl.GEO.getBaseUrl() + placeName + googleAPIKey;
+        String url = ApiBaseUrl.GEO.getBaseUrl() + placeName + "&key=" + googleAPIKey;
         String response = restTemplate.getForObject(url, String.class);
         return locationManager.parseCoordinatesFromPlace( Optional.ofNullable(response) );
 
@@ -70,7 +70,7 @@ public class RestService {
      */
     public Optional<List<Search>> getPlacesFromPattern(String pattern) {
         if( pattern.equals("") ) { return Optional.empty(); }
-        String options = "&types=(cities)&components=country:ch|country:fr&language=en";
+        String options = "&types=(cities)&components=country:ch|country:fr&language=en&key=";
         String url = ApiBaseUrl.PLACES.getBaseUrl() + pattern +  options + googleAPIKey;
         String response = this.restTemplate.getForObject(url, String.class);
         return locationManager.parsePlacesFromPattern(Optional.ofNullable(response));

@@ -24,13 +24,21 @@ To run the project, the followings must be installed on the machine :
 
 1. Clone the repository
 
-2. Run Docker Compose with the following command
+2. Add Google API key in `src/main/java/com/waterloggedorganisation/backend/controller/RestService.java`
+
+   ```java
+   27	private String googleAPIKey = "";
+   ```
+
+   
+
+3. Run Docker Compose with the following command
 
    ```bash
    docker-compose up -d
    ```
 
-3. The API is now available on the port 8081
+4. The API is now available on the port 8081
 
 ### Send GraphQL request 
 
@@ -78,7 +86,7 @@ Server address : `http://localhost:8081/graphql`
     }
 }
 
-// Search river and places by name (aucompletion)
+// Search river and places by name (aucompletion) :
 {
     searchFromPattern(pattern: "La") {
         name
