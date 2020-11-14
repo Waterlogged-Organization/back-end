@@ -16,8 +16,6 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-//api key geo : AIzaSyA8V6EAxd9oPR4EnTb6NMXQanzG93aRb4A
-
 @Service
 public class RestService {
 
