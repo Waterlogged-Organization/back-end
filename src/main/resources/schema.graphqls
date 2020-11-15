@@ -8,8 +8,9 @@
 
 type Query {
     riverById(id:ID) : River
-    riverByLocation(latitude:Float, longitude:Float, radius:Float): [River]
-    riverByPlace(placeName:String, radius:Float) : [River]
+    riverByName(name:String) : River
+    riversByLocation(latitude:Float, longitude:Float, radius:Float): [River]
+    riversByPlace(placeName:String, radius:Float) : [River]
     searchFromPattern(pattern:String): [Search]
 }
 

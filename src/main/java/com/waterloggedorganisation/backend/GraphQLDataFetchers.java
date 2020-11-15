@@ -85,7 +85,7 @@ public class GraphQLDataFetchers {
 
 
 
-    // DataFetcher of the request riverById
+    // DataFetcher to get a river by Id
     public DataFetcher getRiverByIdDataFetcher() {
         return dataFetchingEnvironment -> {
             String riverId = dataFetchingEnvironment.getArgument("id");
@@ -97,8 +97,20 @@ public class GraphQLDataFetchers {
         };
     }
 
-    // DataFetcher of the request riverByLocation
-    public DataFetcher getRiverByLocationDataFetcher() {
+    // DataFetcher to get a river by its name
+    public DataFetcher getRiverByNameDataFetcher() {
+        return dataFetchingEnvironment -> {
+            String riverName = dataFetchingEnvironment.getArgument("name");
+            return rivers
+                .stream()
+                .filter(river -> river.get("name").equals(riverName))
+                .findFirst()
+                .orElse(null);
+        };
+    }
+
+    // DataFetcher to get rivers in an area defined by coordinates and radius
+    public DataFetcher getRiversByLocationDataFetcher() {
         return dataFetchingEnvironment -> {
             Double riverLatitude = dataFetchingEnvironment.getArgument("latitude");
             Double riverLongitude = dataFetchingEnvironment.getArgument("longitude");
@@ -116,7 +128,8 @@ public class GraphQLDataFetchers {
         };
     }
 
-    public DataFetcher getRiverByLocationNameDataFetcher() {
+    // DataFetcher th get river in an area defined by a place name and a radius
+    public DataFetcher getRiversByPlaceNameDataFetcher() {
         return dataFetchingEnvironment -> {
             String placeName = dataFetchingEnvironment.getArgument("placeName");
             Optional<double[]> coordinates = restService.getCoordinatesFromPlace(placeName);
@@ -136,7 +149,7 @@ public class GraphQLDataFetchers {
         };
     }
 
-
+    // DataFectcher to get rivers and places from a pattern
     public DataFetcher searchFromPatternDataFetcher() {
         return dataFetchingEnvironment -> {
             String pattern = dataFetchingEnvironment.getArgument("pattern");

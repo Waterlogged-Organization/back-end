@@ -56,9 +56,11 @@ public class GraphQLProvider {
                 .type(newTypeWiring("Query")
                         .dataFetcher("riverById", graphQLDataFetchers.getRiverByIdDataFetcher()))
                 .type(newTypeWiring("Query")
-                        .dataFetcher("riverByLocation", graphQLDataFetchers.getRiverByLocationDataFetcher()))
+                        .dataFetcher("riverByName", graphQLDataFetchers.getRiverByNameDataFetcher()))     
                 .type(newTypeWiring("Query")
-                        .dataFetcher("riverByPlace", graphQLDataFetchers.getRiverByLocationNameDataFetcher()))
+                        .dataFetcher("riversByLocation", graphQLDataFetchers.getRiversByLocationDataFetcher()))
+                .type(newTypeWiring("Query")
+                        .dataFetcher("riversByPlace", graphQLDataFetchers.getRiversByPlaceNameDataFetcher()))
                 .type(newTypeWiring("Query")
                         .dataFetcher("searchFromPattern", graphQLDataFetchers.searchFromPatternDataFetcher()))   
                 .build();

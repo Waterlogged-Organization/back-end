@@ -12,9 +12,11 @@ import java.util.Optional;
 import com.waterloggedorganisation.backend.model.Search;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 
 //api key geo : AIzaSyA8V6EAxd9oPR4EnTb6NMXQanzG93aRb4A
 
@@ -24,7 +26,8 @@ public class RestService {
     @Autowired
     private LocationManager locationManager;
 
-    private String googleAPIKey = "";
+    @Value("${googleAPIKey}")
+    private String googleAPIKey;
 
     private enum ApiBaseUrl {
         GEO("https://maps.googleapis.com/maps/api/geocode/json?address="), 
@@ -58,7 +61,6 @@ public class RestService {
         String url = ApiBaseUrl.GEO.getBaseUrl() + placeName + "&key=" + googleAPIKey;
         String response = restTemplate.getForObject(url, String.class);
         return locationManager.parseCoordinatesFromPlace( Optional.ofNullable(response) );
-
     }
 
     /**

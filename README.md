@@ -30,8 +30,6 @@ To run the project, the followings must be installed on the machine :
    27	private String googleAPIKey = "";
    ```
 
-   
-
 3. Run Docker Compose with the following command
 
    ```bash
@@ -62,9 +60,21 @@ Server address : `http://localhost:8081/graphql`
     }
 } 
 
+// Get a river by name :
+{
+    riverByName (name: "Valserine") {
+        id
+        name
+        level
+        difficulty
+        latitude
+        longitude
+    }
+} 
+
 // Get a river by location :
 {
-    riverByLocation(latitude:44.5, longitude:4, radius:50) {
+    riversByLocation(latitude:44.5, longitude:4, radius:50) {
         id
         name
         level
@@ -76,7 +86,7 @@ Server address : `http://localhost:8081/graphql`
 
 // Get a river by place name :
 {
-    riverByPlace(placeName: "Alès", radius: 15) {
+    riversByPlace(placeName: "Alès", radius: 15) {
         id
         name
         level
