@@ -20,17 +20,25 @@ To run the project, the followings must be installed on the machine :
 - Docker
 - Docker-compose
 
+You also need a valid API key used both for Google Geocoding and Google Place services.
+
 ### Run the project
 
 1. Clone the repository
 
-2. Add Google API key in `src/main/java/com/waterloggedorganisation/backend/controller/RestService.java`
+2. Add your Google API key :
 
-   ```java
-   27	private String googleAPIKey = "";
-   ```
+   1. Duplicate the file `src/main/resources/application.properties.example`
 
-3. Run Docker Compose with the following command
+   2. Remove the `.example` extension
+
+   3. Edit the new file (i.e. without extension) to add your Google API key :
+
+      ```properties
+      googleAPIKey=<your API key>
+      ```
+
+3. Run Docker Compose with the following command in the root folder
 
    ```bash
    docker-compose up -d
