@@ -7,6 +7,8 @@ services:
     build:
       context: .
     command: mvn spring-boot:run
+    environment:
+      - GOOGLEAPIKEY=${GOOGLEAPIKEY}
     volumes:
       - '.:/back-end'
     working_dir: /back-end
