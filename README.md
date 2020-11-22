@@ -28,14 +28,12 @@ You also need a valid API key used both for Google Geocoding and Google Place se
 
 2. Add your Google API key :
 
-   1. Duplicate the file `src/main/resources/application.properties.example`
+   1. Add a file entitled `.env` in the project root directory
 
-   2. Remove the `.example` extension
+   2. Edit this file with following content :
 
-   3. Edit the new file (i.e. without extension) to add your Google API key :
-
-      ```properties
-      googleAPIKey=<your API key>
+      ```bash
+      GOOGLE_API_KEY=<your API key>
       ```
 
 3. Run Docker Compose with the following command in the project root directory
