@@ -38,7 +38,7 @@ You also need a valid API key used both for Google Geocoding and Google Place se
       googleAPIKey=<your API key>
       ```
 
-3. Run Docker Compose with the following command in the root folder
+3. Run Docker Compose with the following command in the project root directory
 
    ```bash
    docker-compose up -d
@@ -46,65 +46,81 @@ You also need a valid API key used both for Google Geocoding and Google Place se
 
 4. The API is now available on the port 8081
 
+### Run tests
+
+1. Make sure the image `back-end_back` is built
+
+2. Run the following command into the project root directory
+
+   ```bash
+   docker run -it --rm -v "$(pwd)"/.:/backend back-end_back bash -c "cd backend && mvn test"
+   ```
+
 ### Send GraphQL request 
 
-- With Postman: follow this tutorial : https://youtu.be/7pUbezVADQs, using `./src/main/resources/schema.graphqls` to create the schema
-- With [GraphQL Playground](https://github.com/prisma/graphql-playground)
-
-Server address : `http://localhost:8081/graphql`
+* With common tools  : `http://localhost:8081/graphql`
+* With Grapiql : `http://localhost:8081/graphiql`
 
 <u>Request examples:</u> 
 
 ```yaml
 // Get a river by id :
 {
-    riverById (id: "river-1") {
+    getRiverById (id: "river-1") {
         id
         name
         level
-        difficulty
-        latitude
-        longitude
+    	difficulty
+    	coordinate {
+            latitude
+            longitude
+        }
     }
-} 
+}  
 
 // Get a river by name :
 {
-    riverByName (name: "Valserine") {
+    getRiverByName (name: "Verdanson") {
         id
         name
         level
         difficulty
-        latitude
-        longitude
+        coordinate {
+            latitude
+            longitude
+        }
     }
 } 
 
-// Get a river by location :
+// Get rivers contained in an area :
 {
-    riversByLocation(latitude:44.5, longitude:4, radius:50) {
+    getRiversInArea(latitude:44.5, longitude:4, radius:50) {
         id
         name
         level
         difficulty
-        latitude
-        longitude
+        coordinate {
+            latitude
+            longitude
+        }
     }
 }
 
-// Get a river by place name :
+// Get rivers around a place :
 {
-    riversByPlace(placeName: "Alès", radius: 15) {
+    getRiversAroundAPlace(name:"Alès", radius:100) {
         id
         name
         level
         difficulty
-        latitude
-        longitude
+        coordinate {
+            latitude
+            longitude
+        }
     }
 }
 
-// Search river and places by name (aucompletion) :
+// Search rivers and places by pattern :
 {
     searchFromPattern(pattern: "La") {
         name
@@ -112,13 +128,7 @@ Server address : `http://localhost:8081/graphql`
     }
 }
 
-
 ```
-
-## Sources
-
-- SpringBoot implementation based on: https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot
-- GraphQL implementation based on: https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/
 
 ## Authors 
 
