@@ -17,6 +17,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-        googleAPIKey: ${{ secrets.googleAPIKey }} 
+        GOOGLEAPIKEY: ${{ secrets.GOOGLEAPIKEY }} 
     - name: Build with Maven
       run: mvn test --file pom.xml
