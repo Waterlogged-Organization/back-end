@@ -1,0 +1,12 @@
+query GET_RIVER_BY_ID($id:ID!) {
+  getRiverById(id: $id) {
+    id
+    name
+    level
+    difficulty
+		coordinate{
+      latitude
+    	longitude
+    }
+  }
+}

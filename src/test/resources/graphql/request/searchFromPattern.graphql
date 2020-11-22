@@ -1,0 +1,6 @@
+query SEARCH_FROM_PATTERN($pattern:String!) {
+  searchFromPattern(pattern:$pattern) {
+      name
+      type
+  }
+}

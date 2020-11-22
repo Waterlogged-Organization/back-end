@@ -1,39 +1,26 @@
-# Authors : 
-#   - Maxime Hutinet <maxime@hutinet.ch>
-#   - Justin Foltz <justin.foltz@gmail.com>
-
-# ---------------------------------
-# Queries
-# ---------------------------------
-
-type Query {
-    riverById(id:ID) : River
-    riverByName(name:String) : River
-    riversByLocation(latitude:Float, longitude:Float, radius:Float): [River]
-    riversByPlace(placeName:String, radius:Float) : [River]
-    searchFromPattern(pattern:String): [Search]
-}
-
-# ---------------------------------
-# Model objects
-# ---------------------------------
 
 type River {
-    id: ID
-    name: String
-    level: Float
-    difficulty: Int
-    latitude: Float
-    longitude: Float
+    id:ID!
+    name:String
+    level:Float
+    difficulty:Int
+    coordinate:Coordinate
 }
 
 type Search {
-    name: String
-    type: String
+    name:String
+    type:String
 }
 
-type Place {
-    name: String
-    latitude: Float
-    longitude: Float
+type Coordinate {
+    latitude:Float
+    longitude:Float
+}
+
+type Query {
+    getRiverById(id:ID):River
+    getRiverByName(name:String):River
+    getRiversInArea(latitude:Float, longitude:Float, radius:Float):[River]
+    getRiversAroundAPlace(name:String, radius:Float):[River]
+    searchFromPattern(pattern:String):[Search]
 }

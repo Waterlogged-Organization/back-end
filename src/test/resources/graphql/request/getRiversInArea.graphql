@@ -1,0 +1,12 @@
+query GET_RIVERS_IN_AREA($latitude:Float!, $longitude:Float!, $radius:Float!) {
+  getRiversInArea(latitude:$latitude, longitude:$longitude, radius:$radius) {
+    id
+    name
+    level
+    difficulty
+		coordinate{
+      latitude
+    	longitude
+    }
+  }
+}

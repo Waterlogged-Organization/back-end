@@ -1,0 +1,14 @@
+{
+    "data": {
+      "getRiverById": {
+        "id": "river-1",
+        "name": "Valserine",
+        "level": 55.4,
+        "difficulty": 3,
+        "coordinate": {
+          "latitude": 46.099998,
+          "longitude": 5.81667
+        }
+      }
+    }
+  }

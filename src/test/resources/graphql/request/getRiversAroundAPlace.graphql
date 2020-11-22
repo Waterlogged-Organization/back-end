@@ -1,0 +1,12 @@
+query GET_RIVERS_AROUND_A_PLACE($name:String!, $radius:Float!) {
+    getRiversAroundAPlace(name:$name, radius:$radius) {
+        id
+        name
+        level
+        difficulty
+        coordinate {
+            latitude
+            longitude
+        }
+    }
+}

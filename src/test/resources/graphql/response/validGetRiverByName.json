@@ -1,0 +1,14 @@
+{
+    "data": {
+      "getRiverByName": {
+        "id": "river-2",
+        "name": "Verdanson",
+        "level": 72.5,
+        "difficulty": 4,
+        "coordinate": {
+          "latitude": 43.428443,
+          "longitude": 5.384198
+        }
+      }
+    }
+}

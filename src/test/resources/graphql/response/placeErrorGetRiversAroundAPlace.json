@@ -1,0 +1,10 @@
+{
+    "errors": [
+        {
+            "message": "No place found"
+        }
+    ],
+    "data": {
+        "getRiversAroundAPlace": null
+    }
+}

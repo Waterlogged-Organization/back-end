@@ -4,13 +4,10 @@
  * @author Justin Foltz <justin.foltz@gmail.com>
  */
 
-package com.waterloggedorganisation.backend.controller;
+package com.waterlogged.backend.backend.service;
 
-import java.util.List;
-import java.util.Optional;
+import com.waterlogged.backend.backend.error.NoPlaceFoundException;
 
-import com.waterloggedorganisation.backend.model.Search;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
@@ -20,11 +17,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RestService {
 
-    @Autowired
-    private LocationManager locationManager;
-
     @Value("${googleAPIKey}")
     private String googleAPIKey;
+
 
     private enum ApiBaseUrl {
         GEO("https://maps.googleapis.com/maps/api/geocode/json?address="), 
@@ -50,31 +45,37 @@ public class RestService {
 
     /**
      * Get coordinate from location name using Google Geocoding API
-     * @param name location name
+     * @param name Location name
      * @return Optional of array of double [latitue,longitude]
      */
-    public Optional<double[]> getCoordinatesFromPlace(String placeName) {
-        if( placeName.equals("") ) { return Optional.empty(); }
-        String url = ApiBaseUrl.GEO.getBaseUrl() + placeName + "&key=" + googleAPIKey;
-        String response = restTemplate.getForObject(url, String.class);
-        return locationManager.parseCoordinatesFromPlace( Optional.ofNullable(response) );
+    public String getCoordinatesOfPlace(String name) {
+
+        if( name.equals("") )
+            throw new NoPlaceFoundException();
+
+        String options = "&key=";
+        String url = ApiBaseUrl.GEO.getBaseUrl() + name + options + googleAPIKey;
+        return restTemplate.getForObject(url, String.class);
+    
     }
 
     /**
      * Get a list of places matching with pattern
      * Results are filtered by cities contained in France and Switzerland
      * Results are in english
-     * @param pattern pattern used to find matching places
+     * @param pattern Pattern used to find matching places
      * @return Optional List of Search objects
      */
-    public Optional<List<Search>> getPlacesFromPattern(String pattern) {
-        if( pattern.equals("") ) { return Optional.empty(); }
+    public String getPlacesWithPattern(String pattern) {
+
+        if( pattern.equals("") )
+            throw new NoPlaceFoundException();
+
         String options = "&types=(cities)&components=country:ch|country:fr&language=en&key=";
         String url = ApiBaseUrl.PLACES.getBaseUrl() + pattern +  options + googleAPIKey;
-        String response = this.restTemplate.getForObject(url, String.class);
-        return locationManager.parsePlacesFromPattern(Optional.ofNullable(response));
+        return restTemplate.getForObject(url, String.class);
+    
     }
-
 
 
 }

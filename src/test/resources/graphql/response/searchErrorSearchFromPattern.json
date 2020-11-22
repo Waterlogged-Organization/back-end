@@ -1,0 +1,10 @@
+{
+    "errors": [
+        {
+            "message": "No search results found"
+        }
+    ],
+    "data": {
+        "searchFromPattern": null
+    }
+}

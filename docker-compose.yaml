@@ -6,8 +6,10 @@ services:
   back:
     build:
       context: .
+    command: mvn spring-boot:run
     volumes:
       - '.:/back-end'
+    working_dir: /back-end
     networks:
       - back-end
     ports:

@@ -15,7 +15,5 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-COPY . /back-end
-WORKDIR /back-end
-
-CMD ["mvn", "spring-boot:run"]
+#COPY . /back-end
+#WORKDIR /back-end
