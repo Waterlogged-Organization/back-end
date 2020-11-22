@@ -28,7 +28,7 @@ public class RiverService {
 
     /**
      * Fake database : 
-     * TODO : the presence of emphasis on the names of the rivers induces the absence of the final accolade of json's answers
+     * TODO : the presence of emphasis on the names of the rivers induces the absence of the final brace of json's answers
      */
     List<River> riversFakeDb = Arrays.asList(
         new River( "river-1", "Valserine", 55.4, 3, new Coordinate(46.099998, 5.81667) ),
