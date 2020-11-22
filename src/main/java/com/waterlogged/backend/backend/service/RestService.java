@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RestService {
 
-    @Value("${GOOGLEAPIKEY}")
+    @Value("${GOOGLE_API_KEY}")
     private String googleAPIKey;
 
 
